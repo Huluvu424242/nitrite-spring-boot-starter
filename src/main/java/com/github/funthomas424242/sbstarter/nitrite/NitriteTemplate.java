@@ -1,4 +1,4 @@
-package com.github.funthomas424242.sbstarter.nitrite.nitrite;
+package com.github.funthomas424242.sbstarter.nitrite;
 
 /*-
  * #%L
@@ -40,9 +40,6 @@ import org.dizitart.no2.objects.ObjectRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
@@ -51,10 +48,8 @@ public class NitriteTemplate {
     protected static final Logger LOG = LoggerFactory.getLogger(NitriteTemplate.class);
 
     @Autowired
-    NitriteConfig nitriteConfig;
+    protected NitriteAutoConfiguration nitriteConfig;
 
-    protected NitriteTemplate() {
-    }
 
     // Das funktioniert hier nur, weil der Scope vom NitriteTemplate auf Singleton gesetzt ist.
     // https://www.baeldung.com/spring-bean-scopes
@@ -298,12 +293,3 @@ public class NitriteTemplate {
 
 }
 
-@Service
-class NitritService {
-
-    @Bean(initMethod = "init", destroyMethod = "destroy")
-    @Scope("singleton") // Trotz default, hier soll sichergestellt werden, dass beim upgrade alles so bleibt
-    public NitriteTemplate nitriteTemplate() {
-        return new NitriteTemplate();
-    }
-}

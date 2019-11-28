@@ -22,8 +22,6 @@ package com.github.funthomas424242.sbstarter.nitrite;
  * #L%
  */
 
-import com.github.funthomas424242.sbstarter.nitrite.nitrite.NitriteRepository;
-import com.github.funthomas424242.sbstarter.nitrite.nitrite.NitriteTemplate;
 import com.github.funthomas424242.sbstarter.nitrite.rezept.Rezept;
 import org.dizitart.no2.objects.Cursor;
 import org.dizitart.no2.objects.filters.ObjectFilters;

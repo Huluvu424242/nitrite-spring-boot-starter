@@ -1,8 +1,8 @@
-package com.github.funthomas424242.sbstarter.nitrite.nitrite;
+package com.github.funthomas424242.sbstarter.nitrite;
 
 /*-
  * #%L
- * rezeptsammlung
+ * Nitrite Spring Boot Starter
  * %%
  * Copyright (C) 2019 PIUG
  * %%
@@ -22,8 +22,16 @@ package com.github.funthomas424242.sbstarter.nitrite.nitrite;
  * #L%
  */
 
-import org.dizitart.no2.objects.ObjectRepository;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
 
-public interface NitriteRepository<T,ID> extends ObjectRepository<T> {
+@Service
+class NitriteTemplateProvider {
 
+    @Bean(initMethod = "init", destroyMethod = "destroy")
+    @Scope("singleton") // Trotz default, hier soll sichergestellt werden, dass beim upgrade alles so bleibt
+    public NitriteTemplate nitriteTemplate() {
+        return new NitriteTemplate();
+    }
 }
