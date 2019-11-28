@@ -22,6 +22,7 @@
 [literatur]
 === Literatur und Quellen im Netz
 * https://vimeo.com/198200911 (Bau von spring-boot-starter)
+* https://www.baeldung.com/spring-boot-custom-starter
 
 === Guter Stil
 * https://tuhrig.de/using-configurationproperties-to-separate-service-and-configuration
