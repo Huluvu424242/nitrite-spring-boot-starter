@@ -1,4 +1,4 @@
-package com.github.funthomas424242.sbstarter.nitrite.rezept;
+package com.github.funthomas424242.sbstarter.nitrite;
 
 /*-
  * #%L
@@ -22,7 +22,10 @@ package com.github.funthomas424242.sbstarter.nitrite.rezept;
  * #L%
  */
 
+import org.dizitart.no2.Document;
 import org.dizitart.no2.IndexType;
+import org.dizitart.no2.mapper.Mappable;
+import org.dizitart.no2.mapper.NitriteMapper;
 import org.dizitart.no2.objects.Id;
 import org.dizitart.no2.objects.Index;
 import org.dizitart.no2.objects.Indices;
@@ -35,7 +38,7 @@ import java.util.Objects;
     @Index(value = "titel", type = IndexType.NonUnique),
     @Index(value = "id", type = IndexType.Unique)
 })
-public class Rezept implements Serializable {
+public class Rezept implements Serializable, Mappable {
 
     @Id
     protected long id;
@@ -44,10 +47,11 @@ public class Rezept implements Serializable {
 
     protected String tag;
 
+    public Rezept() {
+    }
 
-    public Rezept(final Long id, final String titel) {
+    public void setId(long id) {
         this.id = id;
-        this.titel = titel;
     }
 
     public void setTitel(final String titel) {
@@ -71,6 +75,25 @@ public class Rezept implements Serializable {
     }
 
     @Override
+    public Document write(NitriteMapper mapper) {
+        Document document = new Document();
+        document.put("id", getId());
+        document.put("titel", getTitel());
+        document.put("tag", getTag());
+        return document;
+    }
+
+    @Override
+    public void read(NitriteMapper mapper, Document document) {
+        if (document != null) {
+            setId((long) document.get("id"));
+            setTitel((String) document.get("titel"));
+            setTag((String) document.get("tag"));
+        }
+    }
+
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Rezept)) return false;
@@ -84,4 +107,6 @@ public class Rezept implements Serializable {
     public int hashCode() {
         return Objects.hash(id, titel, tag);
     }
+
+
 }

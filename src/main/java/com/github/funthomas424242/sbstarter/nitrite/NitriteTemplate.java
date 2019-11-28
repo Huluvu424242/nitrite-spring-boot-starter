@@ -106,10 +106,10 @@ public class NitriteTemplate {
         this.nitriteInstanz.close();
     }
 
-    public <ET, KT> NitriteRepository<ET, KT> getRepository(Class<ET> type, Class<KT> keyClass) {
+    public <ET> NitriteRepository<ET> getRepository(Class<ET> type) {
         LOG.debug("Erzeuge neues Nitrite Repository für: {}", type.getName());
         final ObjectRepository<ET> tmpRepository = this.nitriteInstanz.getRepository(type);
-        return new NitriteRepository<ET, KT>() {
+        return new NitriteRepository<ET>() {
 
             protected ObjectRepository<ET> objectRepository = tmpRepository;
 

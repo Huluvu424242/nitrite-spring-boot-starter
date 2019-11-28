@@ -22,7 +22,6 @@ package com.github.funthomas424242.sbstarter.nitrite;
  * #L%
  */
 
-import com.github.funthomas424242.sbstarter.nitrite.rezept.Rezept;
 import org.dizitart.no2.objects.Cursor;
 import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.junit.jupiter.api.AfterEach;
@@ -46,11 +45,11 @@ class NitriteStarterTests {
     @Autowired
     NitriteTemplate nitriteTemplate;
 
-    protected NitriteRepository<Rezept, Long> repository;
+    protected NitriteRepository<Rezept> repository;
 
     @BeforeEach
     public void setUp() {
-        repository = nitriteTemplate.getRepository(Rezept.class, Long.class);
+        repository = nitriteTemplate.getRepository(Rezept.class);
         Assumptions.assumeTrue(repository.find().size() == 0, "Vorbedingung size == 0 nicht erfüllt");
     }
 
@@ -63,13 +62,18 @@ class NitriteStarterTests {
     @DisplayName("Prüfe ob geschriebene Werte wieder ausgelesen werden können.")
     void pruefeSchreibenLesen() {
 
-        final Rezept rezept = new Rezept(1L, "Apfelkuchen mit Hefeteig");
+        final Rezept rezept = new Rezept();
+        rezept.setId(1L);
+        rezept.setTitel("Apfelkuchen mit Hefeteig");
+        rezept.setTag("Apfel");
 
         // Schreiben
         repository.insert(rezept);
 
         // Lesen
         final Cursor<Rezept> rezepts = repository.find(ObjectFilters.eq("titel", "Apfelkuchen mit Hefeteig"));
+
+       // Auswertung
         assertEquals(1, rezepts.size());
         final Rezept firstRezept = rezepts.firstOrDefault();
         assertNotSame(rezept, firstRezept);
@@ -91,9 +95,10 @@ class NitriteStarterTests {
     @DisplayName("Prüfe ob ein Wert aktualisiert werden kann.")
     void pruefeUpdate() {
 
-        final Rezept rezept = new Rezept(1L, "Testen in vertrauten Umgebungen");
+        final Rezept rezept = new Rezept();
+        rezept.setId(1L);
+        rezept.setTitel("Testen in vertrauten Umgebungen");
         repository.insert(rezept);
-
 
         final Cursor<Rezept> rezepts = repository.find(ObjectFilters.eq("id", 1L));
         assertEquals(1, rezepts.size());
@@ -104,8 +109,5 @@ class NitriteStarterTests {
         final Cursor<Rezept> rezepts1 = repository.find(ObjectFilters.eq("id", 1L));
         assertEquals(1, rezepts1.size());
         assertEquals(TEXT_DAS_IST_MAL_EINE_ÄNDERUNG, rezepts1.firstOrDefault().getTitel());
-
     }
-
-
 }

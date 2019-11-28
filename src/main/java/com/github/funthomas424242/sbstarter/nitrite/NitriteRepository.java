@@ -24,6 +24,6 @@ package com.github.funthomas424242.sbstarter.nitrite;
 
 import org.dizitart.no2.objects.ObjectRepository;
 
-public interface NitriteRepository<T,ID> extends ObjectRepository<T> {
+public interface NitriteRepository<T> extends ObjectRepository<T> {
 
 }
