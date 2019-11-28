@@ -2,15 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.2.1.RELEASE</version>
-    <relativePath/> <!-- lookup parent from repository -->
-  </parent>
+  <!--  <parent>-->
+  <!--    <groupId>org.springframework.boot</groupId>-->
+  <!--    <artifactId>spring-boot-starter-parent</artifactId>-->
+  <!--    <version>2.2.1.RELEASE</version>-->
+  <!--    <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+  <!--  </parent>-->
   <groupId>com.github.funthomas424242</groupId>
   <artifactId>nitrite-spring-boot-starter</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
   <name>Nitrite Spring Boot Starter</name>
   <description>Spring Boot Starter für die Nitrite Datenbank</description>
   <inceptionYear>2019</inceptionYear>
@@ -54,6 +55,7 @@
 
   <properties>
     <java.version>11</java.version>
+    <spring-boot-version>2.2.1.RELEASE</spring-boot-version>
     <spring-cloud.version>Hoxton.RC2</spring-cloud.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -61,6 +63,7 @@
     <maven.compiler.release>11</maven.compiler.release>
     <junit-jupiter-engine.version>5.5.2</junit-jupiter-engine.version>
     <junit-excluded-groups/>
+    <!--    <start-class>com.github.funthomas424242.xxxx</start-class>-->
   </properties>
 
   <prerequisites>
@@ -68,14 +71,13 @@
   </prerequisites>
 
   <dependencies>
+    <!-- für Spring Boot Starter notwendig -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
+      <artifactId>spring-boot-autoconfigure</artifactId>
+      <version>${spring-boot-version}</version>
+      <scope>compile</scope>
     </dependency>
-    <!--    <dependency>-->
-    <!--      <groupId>org.springframework.boot</groupId>-->
-    <!--      <artifactId>spring-boot-starter-thymeleaf</artifactId>-->
-    <!--    </dependency>-->
 
     <!-- nitrite db -->
     <dependency>
@@ -92,42 +94,28 @@
       <version>1.7.29</version>
       <scope>compile</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-core</artifactId>
-      <version>1.2.3</version>
-      <!-- weil wir keine Lib sondern eine echte Enduser App sind -->
-      <scope>compile</scope>
-    </dependency>
-    <!-- APIs von denen die Generate abhängen -->
-    <!--    <dependency>-->
-    <!--      <groupId>javax.validation</groupId>-->
-    <!--      <artifactId>validation-api</artifactId>-->
-    <!--      <version>2.0.1.Final</version>-->
-    <!--      <scope>compile</scope>-->
-    <!--    </dependency>-->
 
     <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
-      <version>4.5.10</version>
-      <scope>compile</scope>
-    </dependency>
+    <!--    <dependency>-->
+    <!--      <groupId>org.apache.httpcomponents</groupId>-->
+    <!--      <artifactId>httpclient</artifactId>-->
+    <!--      <version>4.5.10</version>-->
+    <!--      <scope>compile</scope>-->
+    <!--    </dependency>-->
     <!-- https://mvnrepository.com/artifact/org.json/json -->
-    <dependency>
-      <groupId>org.json</groupId>
-      <artifactId>json</artifactId>
-      <version>20190722</version>
-      <scope>compile</scope>
-    </dependency>
+    <!--    <dependency>-->
+    <!--      <groupId>org.json</groupId>-->
+    <!--      <artifactId>json</artifactId>-->
+    <!--      <version>20190722</version>-->
+    <!--      <scope>compile</scope>-->
+    <!--    </dependency>-->
 
 
     <!-- Test Abhängigkeiten -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
+      <version>${spring-boot-version}</version>
       <scope>test</scope>
       <exclusions>
         <exclusion>
@@ -154,44 +142,27 @@
       <scope>test</scope>
     </dependency>
 
-    <!--    <dependency>-->
-    <!--      <groupId>nl.jqno.equalsverifier</groupId>-->
-    <!--      <artifactId>equalsverifier</artifactId>-->
-    <!--      <version>3.1.10</version>-->
-    <!--      <scope>test</scope>-->
-    <!--    </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>org.apache.bval</groupId>-->
-    <!--      <artifactId>bval-jsr</artifactId>-->
-    <!--      <version>2.0.3</version>-->
-    <!--      <scope>test</scope>-->
-    <!--    </dependency>-->
-    <!--    &lt;!&ndash; REST Clients testen &ndash;&gt;-->
-    <!--    &lt;!&ndash; https://mvnrepository.com/artifact/com.github.tomakehurst/wiremock &ndash;&gt;-->
-    <!--    <dependency>-->
-    <!--      <groupId>com.github.tomakehurst</groupId>-->
-    <!--      <artifactId>wiremock-standalone</artifactId>-->
-    <!--      <version>2.25.1</version>-->
-    <!--      <scope>test</scope>-->
-    <!--    </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>io.rest-assured</groupId>-->
-    <!--      <artifactId>rest-assured</artifactId>-->
-    <!--      <version>4.1.2</version>-->
-    <!--      <scope>test</scope>-->
-    <!--    </dependency>-->
+    <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-core</artifactId>
+      <version>1.2.3</version>
+      <!-- weil wir keine Lib sondern eine echte Enduser App sind -->
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <dependencyManagement>
-    <!--		<dependencies>-->
-    <!--			<dependency>-->
-    <!--				<groupId>org.springframework.cloud</groupId>-->
-    <!--				<artifactId>spring-cloud-dependencies</artifactId>-->
-    <!--				<version>${spring-cloud.version}</version>-->
-    <!--				<type>pom</type>-->
-    <!--				<scope>import</scope>-->
-    <!--			</dependency>-->
-    <!--		</dependencies>-->
+    <dependencies>
+      <dependency>
+        <!-- Import dependency management from Spring Boot -->
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot-version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
   </dependencyManagement>
 
 
@@ -437,6 +408,7 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>${spring-boot-version}</version>
       </plugin>
       <plugin>
         <groupId>org.jacoco</groupId>
@@ -456,17 +428,6 @@
           </execution>
         </executions>
       </plugin>
-
-      <!--      <plugin>-->
-      <!--        <artifactId>maven-jlink-plugin</artifactId>-->
-      <!--        <version>3.0.0-alpha-1</version>-->
-      <!--        <extensions>true</extensions>-->
-      <!--        <configuration>-->
-      <!--          <verbose>false</verbose>-->
-      <!--          <noHeaderFiles>true</noHeaderFiles>-->
-      <!--          <noManPages>true</noManPages>-->
-      <!--        </configuration>-->
-      <!--      </plugin>-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
@@ -497,31 +458,6 @@
           </dependency>
         </dependencies>
       </plugin>
-<!--      <plugin>-->
-<!--        &lt;!&ndash; NOTE: We don't need a groupId specification because the group is-->
-<!--            org.apache.maven.plugins ...which is assumed by default. &ndash;&gt;-->
-<!--        <artifactId>maven-assembly-plugin</artifactId>-->
-<!--        <executions>-->
-<!--          <execution>-->
-<!--            <id>package-assemblies</id>-->
-<!--            <phase>package</phase>-->
-<!--            <goals>-->
-<!--              <goal>single</goal>-->
-<!--            </goals>-->
-<!--            <configuration>-->
-<!--              <archive>-->
-<!--                <manifest>-->
-<!--                  <mainClass>com.github.funthomas424242.nitrite-spring-boot-starter.RezeptsammlungApplication</mainClass>-->
-<!--                </manifest>-->
-<!--              </archive>-->
-<!--              <tarLongFileMode>posix</tarLongFileMode>-->
-<!--              <descriptorRefs>-->
-<!--                <descriptorRef>jar-with-dependencies</descriptorRef>-->
-<!--              </descriptorRefs>-->
-<!--            </configuration>-->
-<!--          </execution>-->
-<!--        </executions>-->
-<!--      </plugin>-->
       <plugin>
         <artifactId>maven-javadoc-plugin</artifactId>
         <executions>
@@ -550,77 +486,12 @@
   </build>
 
   <profiles>
-    <!--    <profile>-->
-    <!--      <id>local</id>-->
-    <!--      <build>-->
-    <!--        <plugins>-->
-    <!--          <plugin>-->
-    <!--            <groupId>org.apache.maven.plugins</groupId>-->
-    <!--            <artifactId>maven-toolchains-plugin</artifactId>-->
-    <!--            <version>3.0.0</version>-->
-    <!--            <configuration>-->
-    <!--              <toolchains>-->
-    <!--                <jdk>-->
-    <!--                  <version>13</version>-->
-    <!--                  <vendor>openjdk</vendor>-->
-    <!--                </jdk>-->
-    <!--              </toolchains>-->
-    <!--            </configuration>-->
-    <!--            <executions>-->
-    <!--              <execution>-->
-    <!--                <goals>-->
-    <!--                  <goal>toolchain</goal>-->
-    <!--                </goals>-->
-    <!--              </execution>-->
-    <!--            </executions>-->
-    <!--          </plugin>-->
-    <!--        </plugins>-->
-    <!--      </build>-->
-    <!--      <activation>-->
-    <!--        &lt;!&ndash; nur aktive wenn noch kein anderes aktiv ist &ndash;&gt;-->
-    <!--        <activeByDefault>false</activeByDefault>-->
-    <!--      </activation>-->
-    <!--    </profile>-->
     <profile>
       <id>headless</id>
       <properties>
         <junit-excluded-groups>headfull</junit-excluded-groups>
       </properties>
     </profile>
-    <!--    <profile>-->
-    <!--      <id>jmod</id>-->
-    <!--      <properties>-->
-    <!--        <mypackaging>jar</mypackaging>-->
-    <!--        <maven.test.skip>true</maven.test.skip>-->
-    <!--      </properties>-->
-    <!--      <build>-->
-    <!--        <defaultGoal>package</defaultGoal>-->
-    <!--        <plugins>-->
-    <!--          <plugin>-->
-    <!--            <artifactId>maven-jmod-plugin</artifactId>-->
-    <!--            <version>3.0.0-alpha-1</version>-->
-    <!--            <extensions>true</extensions>-->
-    <!--            <executions>-->
-    <!--              <execution>-->
-    <!--                <id>jmod</id>-->
-    <!--                <goals>-->
-    <!--                  <goal>create</goal>-->
-    <!--                </goals>-->
-    <!--                <phase>package</phase>-->
-    <!--              </execution>-->
-    <!--            </executions>-->
-    <!--          </plugin>-->
-    <!--        </plugins>-->
-    <!--      </build>-->
-    <!--    </profile>-->
-    <!--    <profile>-->
-    <!--      <id>jlink</id>-->
-    <!--      <properties>-->
-    <!--        <mypackaging>jlink</mypackaging>-->
-    <!--        <maven.test.skip>false</maven.test.skip>-->
-    <!--      </properties>-->
-    <!--    </profile>-->
-
   </profiles>
 
   <organization>

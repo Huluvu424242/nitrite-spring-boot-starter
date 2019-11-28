@@ -1,4 +1,4 @@
-package com.github.funthomas424242.rezeptsammlung;
+package com.github.funthomas424242.sbstarter.nitrite.nitrite;
 
 /*-
  * #%L
@@ -22,15 +22,25 @@ package com.github.funthomas424242.rezeptsammlung;
  * #L%
  */
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+@Configuration
+public class NitriteConfig {
 
-@SpringBootApplication
-public class RezeptsammlungApplication {
+    @Value("${nitrite.dbfilePath}")
+    protected String dbfilePath;
 
-    public static void main(String[] args) {
-        SpringApplication.run(RezeptsammlungApplication.class, args);
-    }
+    @Value("${nitrite.username:}")
+    protected String username;
+
+    @Value("${nitrite.password:}")
+    protected String password;
+
+    @Value("${nitrite.disableautocommit:false}")
+    protected Boolean disableautocommit;
+
+    @Value("${nitrite.compressed:false}")
+    protected Boolean compressed;
 
 }

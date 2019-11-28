@@ -1,4 +1,4 @@
-package com.github.funthomas424242.rezeptsammlung.nitrite;
+package com.github.funthomas424242.sbstarter.nitrite.nitrite;
 
 /*-
  * #%L

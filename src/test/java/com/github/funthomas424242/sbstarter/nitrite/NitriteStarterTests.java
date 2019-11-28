@@ -1,4 +1,4 @@
-package com.github.funthomas424242.rezeptsammlung;
+package com.github.funthomas424242.sbstarter.nitrite;
 
 /*-
  * #%L
@@ -22,9 +22,9 @@ package com.github.funthomas424242.rezeptsammlung;
  * #L%
  */
 
-import com.github.funthomas424242.rezeptsammlung.nitrite.NitriteRepository;
-import com.github.funthomas424242.rezeptsammlung.nitrite.NitriteTemplate;
-import com.github.funthomas424242.rezeptsammlung.rezept.Rezept;
+import com.github.funthomas424242.sbstarter.nitrite.nitrite.NitriteRepository;
+import com.github.funthomas424242.sbstarter.nitrite.nitrite.NitriteTemplate;
+import com.github.funthomas424242.sbstarter.nitrite.rezept.Rezept;
 import org.dizitart.no2.objects.Cursor;
 import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.junit.jupiter.api.AfterEach;
@@ -41,7 +41,7 @@ import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 @SpringBootTest
 @ActiveProfiles("test")
-class RezeptsammlungApplicationTests {
+class NitriteStarterTests {
 
     public static final String TEXT_DAS_IST_MAL_EINE_ÄNDERUNG = "Das ist mal eine Änderung!!!";
 
