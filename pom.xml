@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starters</artifactId>
-    <version>2.2.1.RELEASE</version>
-  </parent>
+<!--  <parent>-->
+<!--    <groupId>org.springframework.boot</groupId>-->
+<!--    <artifactId>spring-boot-starters</artifactId>-->
+<!--    <version>2.2.1.RELEASE</version>-->
+<!--  </parent>-->
 
   <groupId>com.github.funthomas424242</groupId>
   <artifactId>nitrite-spring-boot-starter</artifactId>
@@ -63,7 +63,6 @@
     <maven.compiler.release>11</maven.compiler.release>
     <junit-jupiter-engine.version>5.5.2</junit-jupiter-engine.version>
     <junit-excluded-groups/>
-    <!--    <start-class>com.github.funthomas424242.xxxx</start-class>-->
   </properties>
 
   <prerequisites>
@@ -72,14 +71,14 @@
 
   <dependencies>
     <!-- für Spring Boot Starter notwendig -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter</artifactId>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter</artifactId>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-autoconfigure</artifactId>
-<!--      <version>${spring-boot-version}</version>-->
+      <version>${spring-boot-version}</version>
       <scope>compile</scope>
     </dependency>
 
@@ -104,7 +103,7 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
-<!--      <version>${spring-boot-version}</version>-->
+      <version>${spring-boot-version}</version>
       <scope>test</scope>
       <exclusions>
         <exclusion>
@@ -136,7 +135,6 @@
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-core</artifactId>
       <version>1.2.3</version>
-      <!-- weil wir keine Lib sondern eine echte Enduser App sind -->
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -147,7 +145,7 @@
         <!-- Import dependency management from Spring Boot -->
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
-        <version>${spring-boot-version}</version>
+        <version>2.2.1.RELEASE</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
