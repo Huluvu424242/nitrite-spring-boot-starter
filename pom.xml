@@ -9,12 +9,12 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>com.github.funthomas424242</groupId>
-  <artifactId>rezeptsammlung</artifactId>
+  <artifactId>nitrite-spring-boot-starter</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>rezeptsammlung</name>
-  <description>Dezentrale Rezeptsammlung auf MongoDB Basis</description>
+  <name>Nitrite Spring Boot Starter</name>
+  <description>Spring Boot Starter für die Nitrite Datenbank</description>
   <inceptionYear>2019</inceptionYear>
-  <url>https://github.com/FunThomas424242/rezeptsammlung</url>
+  <url>https://github.com/FunThomas424242/nitrite-spring-boot-starter</url>
   <licenses>
     <license>
       <url>https://www.gnu.org/licenses/lgpl-3.0.de.html</url>
@@ -25,17 +25,17 @@
     </license>
   </licenses>
   <scm>
-    <connection>scm:git:https://github.com/FunThomas424242/rezeptsammlung.git</connection>
-    <developerConnection>scm:git:git@github.com:FunThomas424242/rezeptsammlung.git</developerConnection>
-    <url>https://github.com/FunThomas424242/rezeptsammlung</url>
+    <connection>scm:git:https://github.com/FunThomas424242/nitrite-spring-boot-starter.git</connection>
+    <developerConnection>scm:git:git@github.com:FunThomas424242/nitrite-spring-boot-starter.git</developerConnection>
+    <url>https://github.com/FunThomas424242/nitrite-spring-boot-starter</url>
   </scm>
   <issueManagement>
     <system>GitHub</system>
-    <url>https://github.com/FunThomas424242/rezeptsammlung/issues/new</url>
+    <url>https://github.com/FunThomas424242/nitrite-spring-boot-starter/issues/new</url>
   </issueManagement>
   <ciManagement>
     <system>Travis</system>
-    <url>https://travis-ci.org/FunThomas424242/rezeptsammlung</url>
+    <url>https://travis-ci.org/FunThomas424242/nitrite-spring-boot-starter</url>
   </ciManagement>
   <distributionManagement>
     <snapshotRepository>
@@ -429,7 +429,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.github.funthomas424242.rezeptsammlung.RezeptsammlungApplication</mainClass>
+              <mainClass>com.github.funthomas424242.nitrite-spring-boot-starter.RezeptsammlungApplication</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -511,7 +511,7 @@
 <!--            <configuration>-->
 <!--              <archive>-->
 <!--                <manifest>-->
-<!--                  <mainClass>com.github.funthomas424242.rezeptsammlung.RezeptsammlungApplication</mainClass>-->
+<!--                  <mainClass>com.github.funthomas424242.nitrite-spring-boot-starter.RezeptsammlungApplication</mainClass>-->
 <!--                </manifest>-->
 <!--              </archive>-->
 <!--              <tarLongFileMode>posix</tarLongFileMode>-->
