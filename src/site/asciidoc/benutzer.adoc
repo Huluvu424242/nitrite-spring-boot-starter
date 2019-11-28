@@ -1,6 +1,6 @@
-# Rezeptsammlung
+# Nitrite Spring Boot Starter
 
-Dieses Projekt stellt eine Rezeptsammlung  bereit.
+Dieses Projekt stellt einen Spring Boot Starter für die Nitrite Datenbank bereit.
 
 
 

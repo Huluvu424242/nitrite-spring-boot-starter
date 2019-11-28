@@ -1,4 +1,4 @@
-# Rezeptsammlung
+# Nitrite Spring Boot Starter
 
 include::../../../ArchitekturEntscheidungen.adoc[tabsize=4]
 

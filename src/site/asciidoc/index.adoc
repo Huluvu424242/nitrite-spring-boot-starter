@@ -1,10 +1,10 @@
-# Rezeptsammlung
+# Nitrite Spring Boot Starter
 :author: FunThomas424242 (Thomas Schubert)
 //:toc:
 :icons: font
 :lang: de
 :encoding: iso-8859-1
 
-Dieses Projekt stellt eine Rezeptsammlung  bereit.
+Dieses Projekt stellt eine Spring Boot Starter für die Nitrite Datenbank bereit.
 
 link:benutzer.html[Benutzerhandbuch] link:entwickler.html[Entwicklerhandbuch]

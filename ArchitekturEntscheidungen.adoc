@@ -2,22 +2,42 @@
 
 === Technische Aspekte der fachlichen Umsetzung
 
-
 ==== Entscheidung Programmiersprache
-
-
-==== Entscheidung Jenkins REST API
-
-
-=== Enscheidung GUI Technologie
+Nachdem ein Spring Boot Starter gefordert ist die Wahl auf Java gefallen.
+Möglicherweise hätten Groovy oder Kotlin oder andere VM Sprachen eine Alternative dargestellt.
+Da der Author bislang aber mit Spring Boot nur Erfahrungen in Java gesammelt hat, wurde Java festgelegt.
 
 === Entscheidung Entwicklungsmethode
+Entwickelt wird nach den im RADeS Projekt gesammelten Erfahrungen:
+
+* Als Hostingplattform wird github genutzt, da damit die besten Erfahrungen gesammelt wurden.
+* Agile mit Kanban Board
+* Clean Code mit CI auf Travis und Nutzung von Codacy sowie Codecov
+* Manuelles Deployment über bintray bis ins maven central
 
 === Entscheidung Implementierung
 
+* Es wird auf Autoscanning verzichtet, damit die Endnutzer nicht zum Autoscan gezwungen werden
+* Während der Entwicklung darf Actuator zur Analyse eingebunden werden
+* Actuator wird nicht ausgeliefert, da sonst Security bereitgestellt werden muss und der Starter
+für seine Funktion beides nicht benötigt.
+
 === Entscheidung Testvorgehen
 
+* Es wird Junit 5 verwendet
+* BDD erstmal nicht da geringe Komplexität, falls sich später User Journeys ergeben kann BDD noch eingeführt werden.
+
 === Lessons learned
+
+* spring.factories ist essentiell wichtig für einen Starter und der Wert von
+org.springframework.boot.autoconfigure.EnableAutoConfiguration ist eine Komma separierte Liste
+voll qualifizierter Klassen namen
+* In die org.springframework.boot.autoconfigure.EnableAutoConfiguration kommt alles rein was irgendwie eine Bean
+erzeugt.
+* Damit das Injizieren von Beans im Test funktioniert - stellt man sich am einfachsten ein Dummy Projekt im Test bereit.
+* man braucht diesmal kein spring-parent Projekt
+* Nitrite verhält sich anders als in einem Endnutzer Projekt welches von spring-parent-starter ableitet.
+Plötzlich wird ein ObjektMapper benötigt. -> Die Lösung hier war Mappable
 
 [literatur]
 === Literatur und Quellen im Netz
