@@ -22,6 +22,7 @@ package com.github.funthomas424242.sbstarter.nitrite;
  * #L%
  */
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,7 @@ import org.springframework.stereotype.Service;
 @Service
 class NitriteTemplateProvider {
 
+    @ConditionalOnMissingBean
     @Bean(initMethod = "init", destroyMethod = "destroy")
     @Scope("singleton") // Trotz default, hier soll sichergestellt werden, dass beim upgrade alles so bleibt
     public NitriteTemplate nitriteTemplate() {
