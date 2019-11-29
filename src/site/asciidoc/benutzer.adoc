@@ -21,6 +21,18 @@ Dieser Starter kann wie folgt in eine Spring Boot Anwendung eingebunden werden:
 </dependency>
 ----
 
+Folgende Konfigurationsmöglichkeiten werden vom Starter realisiert:
+
+
+.application.properties
+[source,properties]
+----
+nitrite.dbfilePath=<path zur Datenbankdatei | empty für in-memory Datenbank>
+nitrite.username=
+nitrite.password=
+nitrite.disableautocommit=<true | false>
+nitrite.compressed=<true | false>
+----
 
 
 
