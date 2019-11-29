@@ -2,6 +2,26 @@
 
 Dieses Projekt stellt einen Spring Boot Starter für die Nitrite Datenbank bereit.
 
+Dieser Starter kann wie folgt in eine Spring Boot Anwendung eingebunden werden:
+
+.pom.xml
+[source,xml]
+----
+<!-- nitrite db -->
+<dependency>
+  <groupId>com.github.funthomas424242</groupId>
+  <artifactId>nitrite-spring-boot-starter</artifactId>
+  <version>0.0.1</version>
+</dependency>
+<dependency>
+  <groupId>org.dizitart</groupId>
+  <artifactId>nitrite</artifactId>
+  <version>3.3.0</version>
+  <scope>compile</scope>
+</dependency>
+----
+
+
 
 
 

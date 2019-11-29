@@ -31,7 +31,11 @@ für seine Funktion beides nicht benötigt.
 
 * spring.factories ist essentiell wichtig für einen Starter und der Wert von
 org.springframework.boot.autoconfigure.EnableAutoConfiguration ist eine Komma separierte Liste
-voll qualifizierter Klassen namen
+voll qualifizierter Klassennamen
+* spring nimmt offensichtlich an, das Starter sich nur aktivieren wenn bestimmte Klassen gefunden werden.
+Demnach aktiviert sich der Starter nur noch wenn die nitrite Datenbank im Klassenpfad gefunden wird.
+* Damit der Endnutzer die Beanerzeugung selbst steuern kann, dürfen Beans nur erzeugt werden, wenn nicht bereits vorhanden.
+@ConditionalBeanMissing
 * In die org.springframework.boot.autoconfigure.EnableAutoConfiguration kommt alles rein was irgendwie eine Bean
 erzeugt.
 * Damit das Injizieren von Beans im Test funktioniert - stellt man sich am einfachsten ein Dummy Projekt im Test bereit.
