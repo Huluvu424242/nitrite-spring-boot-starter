@@ -20,7 +20,7 @@ Die Versionierung erfolgt nach http://semver.org/lang/de/[Semantic Versioning].
 
 
 
-== [0.0.1] fertiggestellt 2019-12-xx
+== [0.0.1] fertiggestellt 2019-11-29
 === Added
 * https://github.com/FunThomas424242/nitrite-spring-boot-starter/issues/1[issue #1] Projekt aufgesetzt
 
