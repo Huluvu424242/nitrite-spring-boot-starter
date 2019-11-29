@@ -31,7 +31,7 @@ Die Konfiguration externer Datenbanken wie Nitrite ist für Spring Boot Einsteig
 Außerdem müssen in jedem verwendeten spring boot Projekt bei der Einbindung der Datenbank die gleichen
 "Handgriffe" erledigt werden. Daher bietet sich ein Starter zur Einbindung an.
 
-Diese Projekt realisiert einen solchen Starter mit folgenden Features:
+Dieses Projekt realisiert einen solchen Starter mit folgenden Features:
 
 * Der Starter ist unabhängig von der konkret eingebundenen Nitrite Version, da er nur die Konfiguration
 und ein wenig Infrastruktur zur Verfügung stellt.
