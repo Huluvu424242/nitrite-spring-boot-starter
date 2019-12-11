@@ -53,9 +53,15 @@ public class NitriteTemplate {
 
     // Das funktioniert hier nur, weil der Scope vom NitriteTemplate auf Singleton gesetzt ist.
     // https://www.baeldung.com/spring-bean-scopes
-    protected Nitrite nitriteInstanz;
+    protected static Nitrite nitriteInstanz;
 
     protected void init() {
+
+        if( this.nitriteInstanz != null) {
+            LOG.debug("Nitrite Datenbank ist bereits gestartet.");
+            return;
+        }
+
         LOG.debug("Starte die Nitrite Datenbank.");
         final NitriteBuilder builder = Nitrite.builder();
 
