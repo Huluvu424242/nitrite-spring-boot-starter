@@ -22,6 +22,8 @@ package com.github.funthomas424242.sbstarter.nitrite;
  * #L%
  */
 
+import org.dizitart.no2.Nitrite;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
@@ -29,12 +31,14 @@ import org.springframework.stereotype.Service;
 @Service
 class NitriteTemplateProvider {
 
+    @ConditionalOnClass({Nitrite.class})
     @ConditionalOnMissingBean
     @Bean
     public NitriteTemplate nitriteTemplate() {
         return new NitriteTemplate();
     }
 
+    @ConditionalOnClass({Nitrite.class})
     @ConditionalOnMissingBean
     @Bean
     public NitriteInstanz nitriteInstanz(final NitriteAutoConfiguration config) {
