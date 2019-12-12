@@ -26,6 +26,7 @@ import org.dizitart.no2.Document;
 import org.dizitart.no2.FindOptions;
 import org.dizitart.no2.Index;
 import org.dizitart.no2.IndexOptions;
+import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.NitriteCollection;
 import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.RemoveOptions;
@@ -47,6 +48,10 @@ public class NitriteTemplate {
 
     @Autowired
     protected NitriteInstanz nitriteInstanz;
+
+    public Nitrite getNitrite(){
+        return nitriteInstanz.getNitrite();
+    }
 
     public <ET> NitriteRepository<ET> getRepository(Class<ET> type) {
         LOG.debug("Erzeuge neues Nitrite Repository für: {}", type.getName());
