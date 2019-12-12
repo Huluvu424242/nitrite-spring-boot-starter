@@ -60,6 +60,10 @@ public class NitriteTemplate {
                 return objectRepository.insert(et, ets);
             }
 
+            @Override
+            public WriteResult insert(ET et) {
+                return objectRepository.insert(et);
+            }
 
             @Override
             public WriteResult update(ObjectFilter objectFilter, ET et) {
