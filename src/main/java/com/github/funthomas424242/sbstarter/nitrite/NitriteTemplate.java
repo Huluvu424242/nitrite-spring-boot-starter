@@ -27,7 +27,6 @@ import org.dizitart.no2.FindOptions;
 import org.dizitart.no2.Index;
 import org.dizitart.no2.IndexOptions;
 import org.dizitart.no2.Nitrite;
-import org.dizitart.no2.NitriteBuilder;
 import org.dizitart.no2.NitriteCollection;
 import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.RemoveOptions;
@@ -48,67 +47,15 @@ public class NitriteTemplate {
     protected static final Logger LOG = LoggerFactory.getLogger(NitriteTemplate.class);
 
     @Autowired
-    protected NitriteAutoConfiguration nitriteConfig;
+    protected NitriteInstanz nitriteInstanz;
 
-
-    // Das funktioniert hier nur, weil der Scope vom NitriteTemplate auf Singleton gesetzt ist.
-    // https://www.baeldung.com/spring-bean-scopes
-    protected Nitrite nitriteInstanz;
-
-    protected void init() {
-        LOG.debug("Starte die Nitrite Datenbank.");
-        final NitriteBuilder builder = Nitrite.builder();
-
-        LOG.debug("[Nitrite Config]\n dbFile: {} \n compressed {} \n disableautocommit {} \n username {} \n password {}\n"
-            , nitriteConfig.dbfilePath
-            , nitriteConfig.compressed
-            , nitriteConfig.disableautocommit
-            , nitriteConfig.username
-            , nitriteConfig.password
-        );
-
-
-        if (nitriteConfig.dbfilePath != null && !nitriteConfig.dbfilePath.isEmpty()) {
-            LOG.info("[Nitrite] used dbFile: {}", nitriteConfig.dbfilePath);
-            builder.filePath(nitriteConfig.dbfilePath);
-        } else {
-            LOG.info("[Nitrite] used as in-memory database.");
-        }
-
-        if (nitriteConfig.compressed != null && nitriteConfig.compressed) {
-            LOG.info("[Nitrite] will be compressed automatically.");
-            builder.compressed();
-        }
-
-        if (nitriteConfig.disableautocommit != null && nitriteConfig.disableautocommit) {
-            LOG.info("[Nitrite] has autocommit disabled.");
-            builder.disableAutoCommit();
-        }
-
-        if (nitriteConfig.username == null || nitriteConfig.username.isEmpty() || nitriteConfig.password == null || nitriteConfig.password.isEmpty()) {
-            LOG.info("[Nitrite] openOrCreate without Credentials.");
-            this.nitriteInstanz = builder.openOrCreate();
-        } else {
-            LOG.info("[Nitrite] openOrCreate with Credentials.");
-            this.nitriteInstanz = builder.openOrCreate(nitriteConfig.username, nitriteConfig.password);
-        }
-    }
-
-    protected void destroy() {
-        LOG.debug("Zerstöre die Nitrite Datenbank.");
-        /**
-         * Shutdown Hook
-         *
-         * While opening the database, Nitrite registers itself to a JVM shutdown hook, which before exiting will close the
-         * database without persisting any unsaved changes to the disk. This shutdown hook protects the data file from
-         * corruption due to JVM shutdown before properly closing the database.
-         */
-        this.nitriteInstanz.close();
+    public Nitrite getNitrite(){
+        return nitriteInstanz.getNitrite();
     }
 
     public <ET> NitriteRepository<ET> getRepository(Class<ET> type) {
         LOG.debug("Erzeuge neues Nitrite Repository für: {}", type.getName());
-        final ObjectRepository<ET> tmpRepository = this.nitriteInstanz.getRepository(type);
+        final ObjectRepository<ET> tmpRepository = this.nitriteInstanz.getNitrite().getRepository(type);
         return new NitriteRepository<ET>() {
 
             protected ObjectRepository<ET> objectRepository = tmpRepository;
@@ -118,6 +65,10 @@ public class NitriteTemplate {
                 return objectRepository.insert(et, ets);
             }
 
+            @Override
+            public WriteResult insert(ET et) {
+                return objectRepository.insert(et);
+            }
 
             @Override
             public WriteResult update(ObjectFilter objectFilter, ET et) {
