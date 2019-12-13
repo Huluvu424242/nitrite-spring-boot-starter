@@ -19,6 +19,19 @@ Die Versionierung erfolgt nach http://semver.org/lang/de/[Semantic Versioning].
 * n/a
 
 
+== [0.0.2] fertiggestellt 2019-12-XX
+=== Added
+
+* API method getNitrite() added
+* API method NitriteRepository.insert(T element) added
+
+=== Changed
+
+* * https://github.com/FunThomas424242/nitrite-spring-boot-starter/issues/2[issue #2] Nitrite singleton instance fixed
+
+### Removed
+
+* n/a
 
 == [0.0.1] fertiggestellt 2019-11-29
 === Added
