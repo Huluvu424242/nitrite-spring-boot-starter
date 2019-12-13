@@ -5,7 +5,7 @@
 
   <groupId>com.github.funthomas424242</groupId>
   <artifactId>nitrite-spring-boot-starter</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>Nitrite Spring Boot Starter</name>
   <description>Spring Boot Starter für die Nitrite Datenbank</description>
