@@ -1,0 +1,21 @@
+name: Deploy Release
+
+on:
+  push:
+    branches:    
+    - 'releases/**'
+    - '!releases/**-snapshot'
+
+jobs:
+  deploy:
+    name: deploy on github
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up JDK 13
+      uses: actions/setup-java@v1
+      with:
+        java-version: 13
+    - name: maven deploy
+      run: ./mvnw deploy
