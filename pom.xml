@@ -32,7 +32,7 @@
   <ciManagement>
     <system>Travis</system>
     <url>https://travis-ci.org/FunThomas424242/nitrite-spring-boot-starter</url>
-  </ciManagement>
+  </ciManagement> 
   <distributionManagement>
     <repository>
       <id>github</id>
